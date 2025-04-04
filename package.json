@@ -1,6 +1,6 @@
 {
   "name": "react-native-external-keyboard-listener",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Native listen event from external keyboard",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
@@ -44,7 +44,7 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
     "prepare": "bob build",
-    "release": "release-it"
+    "release": "SKIP=lefthook && release-it --no-increment"
   },
   "keywords": [
     "react-native",

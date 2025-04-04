@@ -8,22 +8,22 @@ export default function App() {
   const [value, setValue] = useState('');
 
   useEffect(() => {
-    // ExternalKeyboardListenerEmitter.startListening(isConnect => {
-    //   setResult(isConnect);
-    // })
+    ExternalKeyboardListenerEmitter.startListening(isConnect => {
+      setResult(isConnect);
+    })
     const kpSubs = ExternalKeyboardListenerEmitter.startKeyPressListener(ev => {
       if (ev.action === 'key_up') {
         setKeyPress(ev);
       }
     })
     
-    // ExternalKeyboardListenerEmitter.checkKeyboardConnection().then(isConnect => {
-    //   setResult(isConnect);
-    // })
+    ExternalKeyboardListenerEmitter.checkKeyboardConnection().then(isConnect => {
+      setResult(isConnect);
+    })
 
     return () => {
-      // ExternalKeyboardListenerEmitter.stopListening();
-      // kpSubs?.remove();
+      ExternalKeyboardListenerEmitter.stopListening();
+      kpSubs?.remove();
     };
   }, []);
 

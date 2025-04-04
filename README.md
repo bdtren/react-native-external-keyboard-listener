@@ -5,7 +5,9 @@ React Native listen event from external keyboard
 ## Installation
 
 ```sh
-npm install react-native-external-keyboard-listener OR yarn add
+npm install react-native-external-keyboard-listener 
+#OR
+yarn add react-native-external-keyboard-listener
 
 npx pod-install
 ```
