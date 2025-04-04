@@ -21,6 +21,9 @@ class ExternalKeyboardListenerModule(private val reactContext: ReactApplicationC
   }
 
   init {
+    keyboardMonitor = BluetoothKeyboardMonitor(reactContext) { isConnected ->
+      println("$tag KeyboardMonitor initial $isConnected")
+    }
     /* forward activity event to controller */
     //  reactContext.addActivityEventListener(object : ActivityEventListener {
     //    override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent?) {
@@ -58,12 +61,6 @@ class ExternalKeyboardListenerModule(private val reactContext: ReactApplicationC
 
   @ReactMethod
   fun startListening() {
-      keyboardMonitor = BluetoothKeyboardMonitor(reactContext) { isConnected ->
-        val params: WritableMap = Arguments.createMap().apply {
-          putBoolean("isConnected", isConnected) // FIXED: Correct usage of putBoolean
-        }
-        sendEvent("KeyboardConnectionChanged", params)
-      }
       keyboardMonitor?.startListening()
       CoroutineScope(Dispatchers.Main).launch {
         val connected = keyboardMonitor?.isBluetoothKeyboardConnected() ?: false
