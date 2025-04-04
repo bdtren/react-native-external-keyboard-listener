@@ -1,13 +1,19 @@
 #import <React/RCTBridgeModule.h>
 
-@interface RCT_EXTERN_MODULE(ExternalKeyboardListener, NSObject)
+@interface RCT_EXTERN_MODULE (ExternalKeyboardListener, NSObject)
+RCT_EXTERN_METHOD(startListening)
+RCT_EXTERN_METHOD(stopListening)
+RCT_EXTERN_METHOD(checkKeyboardConnection
+                  : (RCTPromiseResolveBlock)resolve reject
+                  : (RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(isBluetoothEnabled
+                  : (RCTPromiseResolveBlock)resolve reject
+                  : (RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(enableBluetooth
+                  : (RCTPromiseResolveBlock)resolve reject
+                  : (RCTPromiseRejectBlock)reject)
 
-RCT_EXTERN_METHOD(multiply:(float)a withB:(float)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
-
-+ (BOOL)requiresMainQueueSetup
-{
++ (BOOL)requiresMainQueueSetup {
   return NO;
 }
 

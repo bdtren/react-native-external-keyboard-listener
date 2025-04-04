@@ -2,6 +2,8 @@ require "json"
 
 package = JSON.parse(File.read(File.join(__dir__, "package.json")))
 
+Pod::UI.puts "[BDtren] Thank you for choosing react-native-external-keyboard-listener, it will be worth it 😎👌🔥"
+
 Pod::Spec.new do |s|
   s.name         = "ExternalKeyboardListener"
   s.version      = package["version"]

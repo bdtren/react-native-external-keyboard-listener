@@ -1,6 +1,6 @@
 {
   "name": "react-native-external-keyboard-listener",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "React Native listen event from external keyboard",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
@@ -49,7 +49,17 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "react-native-external-keyboard-listener",
+    "react-native-external-keyboard",
+    "react-native-keyboard-listener",
+    "react-native-keyevent",
+    "external keyboard",
+    "keyboard",
+    "keyboard event",
+    "keyboard listener",
+    "keyboard events",
+    "keyevent"
   ],
   "repository": {
     "type": "git",
