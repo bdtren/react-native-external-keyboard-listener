@@ -13,30 +13,31 @@ import { useState, useEffect, useRef } from 'react';
 
 export default function App() {
   //#region states
-  const [result, setResult] = useState<boolean>();
+  const [isBLEKeyboardConnected, setIsBLEKeyboardConnected] = useState<boolean>();
   const [keyPress, setKeyPress] = useState<KeyPressEvent>();
   const [value, setValue] = useState('');
   //#region Refs
-  const resultRef = useRef(result);
+  const isBLEKeyboardConnectedRef = useRef(isBLEKeyboardConnected);
+  
   //#region Effects
   useEffect(() => {
     // Check if the keyboard is connected
     ExternalKeyboardListenerEmitter.startListening((isConnect) => {
-      setResult(isConnect);
+      setIsBLEKeyboardConnected(isConnect);
     });
     ExternalKeyboardListenerEmitter.checkKeyboardConnection().then(
       (isConnect) => {
-        setResult(isConnect);
+        setIsBLEKeyboardConnected(isConnect);
       }
     );
     // Not show virtual keyboard when external keyboard is connected
-    Keyboard.addListener('keyboardWillShow', e => {
-      if (resultRef.current) {
+    const kbwsSubs = Keyboard.addListener('keyboardWillShow', _ => {
+      if (isBLEKeyboardConnectedRef.current) {
         Keyboard.dismiss();
       }
     })
-    Keyboard.addListener('keyboardDidShow', e => {
-      if (resultRef.current) {
+    const kbdsSubs = Keyboard.addListener('keyboardDidShow', _ => {
+      if (isBLEKeyboardConnectedRef.current) {
         Keyboard.dismiss();
       }
     })
@@ -52,20 +53,22 @@ export default function App() {
 
     return () => {
       ExternalKeyboardListenerEmitter.stopListening();
+      kbwsSubs?.remove();
+      kbdsSubs?.remove();
       kpSubs?.remove();
     };
   }, []);
   useEffect(() => {
-    resultRef.current = result;
-    if (result) {
+    isBLEKeyboardConnectedRef.current = isBLEKeyboardConnected;
+    if (isBLEKeyboardConnected) {
       Keyboard.dismiss();
     }
-  }, [result]);
+  }, [isBLEKeyboardConnected]);
   useEffect(() => {
     // Dismiss the keyboard when the esc key is pressed
     if (
       keyPress?.pressedKey === 'UIKeyInputEscape' ||
-      (Platform.OS === 'ios' && keyPress?.keyCode === 85) ||
+      (Platform.OS === 'ios' && keyPress?.keyCode === 41) ||
       (Platform.OS === 'android' && keyPress?.keyCode === 111)
     ) {
       Keyboard.dismiss();
@@ -74,13 +77,14 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.txt}>BLE connection: {result?.toString()}</Text>
+      <Text style={styles.txt}>BLE connection: {isBLEKeyboardConnected?.toString()}</Text>
       <Text style={styles.txt}>
         Key Press: {keyPress?.action} {keyPress?.keyCode} {keyPress?.pressedKey}
       </Text>
 
       <TextInput
         style={styles.input}
+        showSoftInputOnFocus={!isBLEKeyboardConnected}
         placeholder="Type here"
         value={value}
         onChange={(e) => setValue(e.nativeEvent.text)}
