@@ -123,22 +123,25 @@ console.log('Permission granted:', granted);
 const subscription = ExternalKeyboardListenerEmitter.startKeyPressListener((evt) => {
     console.log('Key pressed:', evt);
 });
-
 // Stop listening:
 subscription.remove();
 ```
 
 ## Notice: In iOS, when you active TextInput some special key might not be listenable
 To get over that issue, you might have to follow these steps:
-    1. Run the command:
-    ```
-        npm install patch-package postinstall-postinstall -D
-        # OR
-        yarn add patch-package postinstall-postinstall -D
-    ```
-    2. Add these code to `node_modules/react-native/Libraries/Text/TextInput/Singleline/RCTUITextField.mm` and `node_modules/react-native/Libraries/Text/TextInput/Multiline/RCTUITextView.mm`:
-    ```
-        ...
+    
+  1- Run the command:
+    
+  ```
+  npm install patch-package postinstall-postinstall -D
+  # OR
+  yarn add patch-package postinstall-postinstall -D
+  ```
+    
+  2- Add these code to `node_modules/react-native/Libraries/Text/TextInput/Singleline/RCTUITextField.mm` and `node_modules/react-native/Libraries/Text/TextInput/Multiline/RCTUITextView.mm`:
+    
+  ```
+  ...
 
         - (NSArray<UIKeyCommand *> *)keyCommands {
             if (self.isFirstResponder) {
@@ -158,20 +161,23 @@ To get over that issue, you might have to follow these steps:
             // You can add custom logic here, such as dismissing the keyboard
             [self resignFirstResponder];  // For example, dismiss the keyboard
         }
-    ```
-        1. Run the command:
-    ```
-        npx patch-package react-native
-    ```
-    4. In your `package.json` file, ensure that this line is added inside `"script"`:
+  ```
 
-    ```
-        "scripts": {
-            ...
-            "postinstall": "patch-package",
-            ...
-        },
-    ```
+  3- Run the command:
+    
+  ```
+  npx patch-package react-native
+  ```
+    
+  4- In your `package.json` file, ensure that this line is added inside `"script"`:
+    
+  ```
+  "scripts": {
+    ...
+    "postinstall": "patch-package",
+    ...
+  },
+  ```
 
 ## TODO list
 
