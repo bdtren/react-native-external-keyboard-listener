@@ -128,6 +128,37 @@ const subscription = ExternalKeyboardListenerEmitter.startKeyPressListener((evt)
 subscription.remove();
 ```
 
+## Notice: In iOS, when you active TextInput some special key might not be listenable
+To get over that issue, you might have to follow these steps:
+    1. Add these code to `node_modules/react-native/Libraries/Text/TextInput/Singleline/RCTUITextField.mm` and `node_modules/react-native/Libraries/Text/TextInput/Multiline/RCTUITextField.mm`:
+    ```
+        #import <ExternalKeyboardListener/ExternalKeyboardListener-Swift.h>
+
+        ...
+
+        - (NSArray<UIKeyCommand *> *)keyCommands {
+            //Or you can return any custom handlers by your choice
+            return [KeyEventListenerConstants specialCommands];
+        }
+    ```
+    2. Run these command:
+    ```
+        npm install patch-package postinstall-postinstall -D
+        # OR
+        yarn add patch-package postinstall-postinstall -D
+
+        npx patch-package react-native
+    ```
+    3. In your `package.json` file, ensure that this line is added inside `"script"`:
+
+    ```
+        "scripts": {
+            ...
+            "postinstall": "patch-package",
+            ...
+        },
+    ```
+
 ## TODO list
 
 - [ ] Fix all //FIXME tags
