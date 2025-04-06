@@ -11,7 +11,7 @@
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		780815826957328B3A08EDD2 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		E39F6F7C82D19C4AE1C30372 /* Pods_ExternalKeyboardListenerExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7B2C575292CFDCCEA59EA33 /* Pods_ExternalKeyboardListenerExample.framework */; };
+		F3E7637AC8D9D5343EB4F421 /* libPods-ExternalKeyboardListenerExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE0C08A5F55229EA0C21BE7 /* libPods-ExternalKeyboardListenerExample.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +20,10 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ExternalKeyboardListenerExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = ExternalKeyboardListenerExample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-ExternalKeyboardListenerExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExternalKeyboardListenerExample.debug.xcconfig"; path = "Target Support Files/Pods-ExternalKeyboardListenerExample/Pods-ExternalKeyboardListenerExample.debug.xcconfig"; sourceTree = "<group>"; };
+		4FE0C08A5F55229EA0C21BE7 /* libPods-ExternalKeyboardListenerExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExternalKeyboardListenerExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5709B34CF0A7D63546082F79 /* Pods-ExternalKeyboardListenerExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExternalKeyboardListenerExample.release.xcconfig"; path = "Target Support Files/Pods-ExternalKeyboardListenerExample/Pods-ExternalKeyboardListenerExample.release.xcconfig"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ExternalKeyboardListenerExample/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ExternalKeyboardListenerExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		C7B2C575292CFDCCEA59EA33 /* Pods_ExternalKeyboardListenerExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExternalKeyboardListenerExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -32,7 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E39F6F7C82D19C4AE1C30372 /* Pods_ExternalKeyboardListenerExample.framework in Frameworks */,
+				F3E7637AC8D9D5343EB4F421 /* libPods-ExternalKeyboardListenerExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,7 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				C7B2C575292CFDCCEA59EA33 /* Pods_ExternalKeyboardListenerExample.framework */,
+				4FE0C08A5F55229EA0C21BE7 /* libPods-ExternalKeyboardListenerExample.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

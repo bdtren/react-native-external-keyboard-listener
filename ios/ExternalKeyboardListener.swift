@@ -5,7 +5,7 @@ import UIKit
 @objc(ExternalKeyboardListener)
 class ExternalKeyboardListener: RCTEventEmitter {
   // Hold a shared instance so that other native code can post events to this module.
-  static var shared: ExternalKeyboardListener?
+  @objc static var shared: ExternalKeyboardListener?
 
   let monitor = BluetoothKeyboardMonitor()
 
@@ -69,6 +69,7 @@ class ExternalKeyboardListener: RCTEventEmitter {
     resolve(result)
   }
 
+  @objc 
   func handleKeyPress(keyCode: Int, action: Int, pressedKey: String) {
     self.sendEvent(
       withName: "OnKeyPress",

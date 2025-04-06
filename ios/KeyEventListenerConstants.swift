@@ -1,11 +1,12 @@
 @objc(KeyEventListenerConstants)
 public class KeyEventListenerConstants: NSObject {
-    public static var supportedSpecialKeyCodes: [Int] = [
+    @objc public static var supportedSpecialKeyCodes: [Int] = [
         58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69,
         76, 119, 41, 41, 115, 121, 116, 80, 79, 81, 82,
     ]
 
-    public static var supportedSpecialKeyInputs: [String] = [
+    @available(iOS 15.0, *)
+    @objc public static var supportedSpecialKeyInputs: [String] = [
         UIKeyCommand.f1, UIKeyCommand.f2, UIKeyCommand.f3, UIKeyCommand.f4,
         UIKeyCommand.f5, UIKeyCommand.f6, UIKeyCommand.f7, UIKeyCommand.f8,
         UIKeyCommand.f9, UIKeyCommand.f10, UIKeyCommand.f11, UIKeyCommand.f12,
@@ -14,9 +15,9 @@ public class KeyEventListenerConstants: NSObject {
         UIKeyCommand.inputLeftArrow, UIKeyCommand.inputRightArrow,
         UIKeyCommand.inputDownArrow, UIKeyCommand.inputUpArrow,
     ]
-    public static var specialCommands: [UIKeyCommand] = KeyEventListenerConstants.setupKeyCommands()
+   @objc public static var specialCommands: [UIKeyCommand] = KeyEventListenerConstants.setupKeyCommands()
 
-    private static func setupKeyCommands() -> [UIKeyCommand] {
+    @objc private static func setupKeyCommands() -> [UIKeyCommand] {
         var commands: [UIKeyCommand] = []
         for input in KeyEventListenerConstants.supportedSpecialKeyInputs {
             print("key init ===----->\(input)")

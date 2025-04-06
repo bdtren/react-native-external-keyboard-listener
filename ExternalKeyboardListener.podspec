@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/bdtren/react-native-external-keyboard-listener.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
-  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
+  # s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'USE_FRAMEWORKS' => 'YES', 'SWIFT_OPTIMIZATION_LEVEL' => '-Owholemodule' }
   s.swift_version = '5.0'
 
 # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.

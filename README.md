@@ -130,15 +130,27 @@ subscription.remove();
 
 ## Notice: In iOS, when you active TextInput some special key might not be listenable
 To get over that issue, you might have to follow these steps:
-    1. Add these code to `node_modules/react-native/Libraries/Text/TextInput/Singleline/RCTUITextField.mm` and `node_modules/react-native/Libraries/Text/TextInput/Multiline/RCTUITextField.mm`:
+    1. Add these code to `node_modules/react-native/Libraries/Text/TextInput/Singleline/RCTUITextField.mm` and `node_modules/react-native/Libraries/Text/TextInput/Multiline/RCTUITextView.mm`:
     ```
-        #import <ExternalKeyboardListener/ExternalKeyboardListener-Swift.h>
-
         ...
 
         - (NSArray<UIKeyCommand *> *)keyCommands {
-            //Or you can return any custom handlers by your choice
-            return [KeyEventListenerConstants specialCommands];
+            if (self.isFirstResponder) {
+                //Add more if you needed
+                return @[
+                [UIKeyCommand keyCommandWithInput:UIKeyInputEscape
+                                    modifierFlags:0
+                                            action:@selector(handleEscapeKeyPress)]
+                ];
+            }
+            return @[];
+        }
+
+        // Handle Escape key press
+        - (void)handleEscapeKeyPress {
+            NSLog(@"Escape key pressed in RCTTextField");
+            // You can add custom logic here, such as dismissing the keyboard
+            [self resignFirstResponder];  // For example, dismiss the keyboard
         }
     ```
     2. Run these command:

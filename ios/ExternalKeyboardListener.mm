@@ -1,6 +1,6 @@
 #import <React/RCTBridgeModule.h>
 
-@interface RCT_EXTERN_MODULE (ExternalKeyboardListener, NSObject)
+@interface RCT_EXTERN_MODULE(ExternalKeyboardListener, NSObject)
 RCT_EXTERN_METHOD(startListening)
 RCT_EXTERN_METHOD(stopListening)
 RCT_EXTERN_METHOD(checkKeyboardConnection

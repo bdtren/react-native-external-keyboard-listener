@@ -1,6 +1,6 @@
 {
   "name": "react-native-external-keyboard-listener",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "React Native listen event from external keyboard",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
