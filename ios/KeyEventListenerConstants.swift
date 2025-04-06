@@ -19,28 +19,37 @@ public class KeyEventListenerConstants: NSObject {
 
     @objc private static func setupKeyCommands() -> [UIKeyCommand] {
         var commands: [UIKeyCommand] = []
-        for input in KeyEventListenerConstants.supportedSpecialKeyInputs {
-            print("key init ===----->\(input)")
-            commands.append(
-                UIKeyCommand(
-                    input: input, modifierFlags: [],
-                    action: #selector(KeyEventListenerConstants.handleKeyUp(_:)))
-            )
+        if #available(iOS 15.0, *) {
+            for input in KeyEventListenerConstants.supportedSpecialKeyInputs {
+                // print("key init ===----->\(input)")
+                commands.append(
+                    UIKeyCommand(
+                        input: input, modifierFlags: [],
+                        action: #selector(KeyEventListenerConstants.handleKeyUp(_:)))
+                )
+            }
+        } else {
+            // Fallback on earlier versions
         }
         return commands
     }
 
     @objc static func handleKeyUp(_ cmd: UIKeyCommand) {
-        print("handleKeyUp ----------------->\(cmd.input ?? "")")
-        let keyCodeIdx = KeyEventListenerConstants.supportedSpecialKeyInputs.firstIndex(
-            where: { it in
-                it == cmd.input
-            })
-        let keyCode = KeyEventListenerConstants.supportedSpecialKeyCodes[keyCodeIdx ?? 0]
-        ExternalKeyboardListener.shared?.handleKeyPress(
-            keyCode: keyCode,
-            action: 1,
-            pressedKey: cmd.input ?? ""
-        )
+        // print("handleKeyUp ----------------->\(cmd.input ?? "")")
+        if #available(iOS 15.0, *) {
+            let keyCodeIdx = KeyEventListenerConstants.supportedSpecialKeyInputs.firstIndex(
+                where: { it in
+                    it == cmd.input
+                })
+            let keyCode = KeyEventListenerConstants.supportedSpecialKeyCodes[keyCodeIdx ?? 0]
+            ExternalKeyboardListener.shared?.handleKeyPress(
+                keyCode: keyCode,
+                action: 1,
+                pressedKey: cmd.input ?? ""
+            )
+        } else {
+            // Fallback on earlier versions
+        }
+        
     }
 }
