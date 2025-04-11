@@ -127,7 +127,7 @@ const subscription = ExternalKeyboardListenerEmitter.startKeyPressListener((evt)
 subscription.remove();
 ```
 
-## Notice: In iOS, when you active TextInput some special key might not be listenable
+## Notice: In iOS, when you active TextInput some special keys might not be listenable
 To get over that issue, you might have to follow these steps:
     
   1- Run the command:
